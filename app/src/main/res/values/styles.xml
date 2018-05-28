@@ -10,4 +10,28 @@
         <item name="android:windowTranslucentNavigation">true</item>
     </style>
 
+    <style name="StyledText">
+        <item name="android:fontFamily">@font/roboto</item>
+    </style>
+
+    <style name="StyledText.Title">
+        <item name="android:textSize">24sp</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+
+    <style name="StyledText.Edit">
+        <item name="android:textSize">13sp</item>
+    </style>
+
+    <style name="StyledButton">
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="android:textSize">13sp</item>
+    </style>
+
+    <style name="StyledButton.Login">
+        <item name="android:background">@color/colorAccent</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
 </resources>
