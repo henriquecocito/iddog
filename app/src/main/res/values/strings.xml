@@ -3,4 +3,6 @@
     <string name="logo_name">THE IDDOG</string>
     <string name="hint_email">email</string>
     <string name="button_login">login</string>
+    <string name="error_empty_email">You must enter your email.</string>
+    <string name="error_unknown">An error occurred.</string>
 </resources>
