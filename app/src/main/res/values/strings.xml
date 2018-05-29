@@ -6,4 +6,8 @@
     <string name="error_empty_email">You must enter your email.</string>
     <string name="error_unknown">An error occurred.</string>
     <string name="packageName">me.henriquecocito.iddog</string>
+    <string name="menu_husky">Husky</string>
+    <string name="menu_labrador">Labrador</string>
+    <string name="menu_hound">Hound</string>
+    <string name="menu_pug">Pug</string>
 </resources>

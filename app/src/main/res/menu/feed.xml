@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/husky"
+        android:title="@string/menu_husky"
+        android:icon="@drawable/ic_husky"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/labrador"
+        android:title="@string/menu_labrador"
+        android:icon="@drawable/ic_labrador"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/hound"
+        android:title="@string/menu_hound"
+        android:icon="@drawable/ic_hound"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/pug"
+        android:title="@string/menu_pug"
+        android:icon="@drawable/ic_pug"
+        app:showAsAction="ifRoom" />
+</menu>

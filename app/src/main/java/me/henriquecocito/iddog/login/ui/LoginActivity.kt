@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity
 import android.view.View
 import kotlinx.android.synthetic.main.activity_login.*
 import me.henriquecocito.iddog.R
+import me.henriquecocito.iddog.feed.FeedActivity
 import me.henriquecocito.iddog.login.presentation.LoginContract
 import me.henriquecocito.iddog.login.presentation.LoginPresenter
 
@@ -48,6 +49,6 @@ class LoginActivity : AppCompatActivity(), LoginContract.View {
     }
 
     override fun openFeed() {
-        val i = 0
+        startActivity(FeedActivity.newIntent(this))
     }
 }
