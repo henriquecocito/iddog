@@ -6,6 +6,7 @@ import me.henriquecocito.iddog.base.presentation.BaseViewContract
 interface FeedContract {
     interface View : BaseViewContract {
         fun showItems(list: MutableList<String>)
+        fun openLogin()
     }
 
     interface Presenter : BasePresenterContract {

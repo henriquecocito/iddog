@@ -1,5 +1,7 @@
 package me.henriquecocito.iddog.login.ui
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
@@ -14,6 +16,10 @@ import me.henriquecocito.iddog.login.presentation.LoginPresenter
 class LoginActivity : AppCompatActivity(), LoginContract.View {
 
     private val presenter : LoginContract.Presenter = LoginPresenter(this, this)
+
+    companion object {
+        fun newIntent(context: Context) = Intent(context, LoginActivity::class.java)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,7 +46,9 @@ class LoginActivity : AppCompatActivity(), LoginContract.View {
 
     override fun showError(e: Throwable) {
         Snackbar
-                .make(container, resources.getIdentifier(e.localizedMessage, "string", packageName), Snackbar.LENGTH_LONG)
+                .make(container, resources.getIdentifier(e.localizedMessage, "string", packageName).let {
+                    if(it == 0) e.localizedMessage else getString(it)
+                }, Snackbar.LENGTH_LONG)
                 .show()
     }
 

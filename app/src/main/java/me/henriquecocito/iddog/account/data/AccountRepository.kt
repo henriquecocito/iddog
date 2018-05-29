@@ -4,15 +4,11 @@ import android.accounts.Account
 import android.content.Context
 import io.reactivex.Observable
 import me.henriquecocito.iddog.account.AccountManager
+import me.henriquecocito.iddog.account.domain.AccountInteractor
 import me.henriquecocito.iddog.base.data.BaseRepository
 import me.henriquecocito.iddog.login.data.model.User
 
 class AccountRepository(private val context: Context) : BaseRepository() {
-
-    companion object {
-        private const val ERROR_NOT_FOUND = "error_not_found"
-        private const val ERROR_UNKNOWN = "error_unknown"
-    }
 
     fun saveAccount(user: User) : Observable<User> {
         return Observable.create<User> { subscriber ->
@@ -24,7 +20,7 @@ class AccountRepository(private val context: Context) : BaseRepository() {
                 }
                 return@create
             }
-            subscriber.onError(Throwable(ERROR_UNKNOWN))
+            subscriber.onError(Throwable(AccountInteractor.ERROR_UNKNOWN))
         }
     }
 
@@ -37,7 +33,7 @@ class AccountRepository(private val context: Context) : BaseRepository() {
                 subscriber.onComplete()
                 return@create
             }
-            subscriber.onError(Throwable(ERROR_NOT_FOUND))
+            subscriber.onError(Throwable(AccountInteractor.ERROR_NOT_FOUND))
         }
     }
 

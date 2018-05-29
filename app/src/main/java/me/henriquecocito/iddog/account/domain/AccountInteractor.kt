@@ -9,6 +9,11 @@ import me.henriquecocito.iddog.login.data.model.User
 
 class AccountInteractor(context: Context) : BaseInteractor(), AccountInterface {
 
+    companion object {
+        const val ERROR_NOT_FOUND = "error_not_found"
+        const val ERROR_UNKNOWN = "error_unknown"
+    }
+
     private val repository = AccountRepository(context)
 
     override fun save(user: User) : Observable<User> {

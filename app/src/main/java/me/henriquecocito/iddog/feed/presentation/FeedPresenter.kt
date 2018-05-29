@@ -23,8 +23,13 @@ class FeedPresenter(context: Context, private val view: FeedContract.View) : Fee
                 }.subscribe({
                     view.showItems(it.list)
                 }, {
-                    view.showError(it)
-                    view.hideLoading()
+                    if(it.localizedMessage == AccountInteractor.ERROR_NOT_FOUND) {
+                        view.openLogin()
+                        view.finish()
+                    } else {
+                        view.showError(it)
+                        view.hideLoading()
+                    }
                 }, {
                     view.hideLoading()
                 })

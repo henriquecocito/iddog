@@ -11,6 +11,7 @@ import kotlinx.android.synthetic.main.fragment_feed.*
 import me.henriquecocito.iddog.R
 import me.henriquecocito.iddog.feed.presentation.FeedContract
 import me.henriquecocito.iddog.feed.presentation.FeedPresenter
+import me.henriquecocito.iddog.login.ui.LoginActivity
 
 class FeedGridFragment : Fragment(), FeedContract.View {
 
@@ -76,6 +77,10 @@ class FeedGridFragment : Fragment(), FeedContract.View {
             addAll(list)
             grid.adapter.notifyDataSetChanged()
         }
+    }
+
+    override fun openLogin() {
+        startActivity(LoginActivity.newIntent(this.context!!))
     }
 
     private fun setupSwipeRefresh() {
