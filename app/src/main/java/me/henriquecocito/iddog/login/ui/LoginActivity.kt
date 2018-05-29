@@ -8,13 +8,11 @@ import kotlinx.android.synthetic.main.activity_login.*
 import me.henriquecocito.iddog.R
 import me.henriquecocito.iddog.login.presentation.LoginContract
 import me.henriquecocito.iddog.login.presentation.LoginPresenter
-import android.widget.FrameLayout
-
 
 
 class LoginActivity : AppCompatActivity(), LoginContract.View {
 
-    val presenter : LoginContract.Presenter = LoginPresenter(this)
+    private val presenter : LoginContract.Presenter = LoginPresenter(this, this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,12 +42,12 @@ class LoginActivity : AppCompatActivity(), LoginContract.View {
     }
 
     override fun showError(e: Throwable) {
-        resources.getIdentifier(e.localizedMessage, "string", packageName).let {
-            if(it != 0) {
-                Snackbar
-                        .make(container, it, Snackbar.LENGTH_LONG)
-                        .show()
-            }
-        }
+        Snackbar
+                .make(container, resources.getIdentifier(e.localizedMessage, "string", packageName), Snackbar.LENGTH_LONG)
+                .show()
+    }
+
+    override fun openFeed() {
+        val i = 0
     }
 }

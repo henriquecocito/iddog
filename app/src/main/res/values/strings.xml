@@ -5,4 +5,5 @@
     <string name="button_login">login</string>
     <string name="error_empty_email">You must enter your email.</string>
     <string name="error_unknown">An error occurred.</string>
+    <string name="packageName">me.henriquecocito.iddog</string>
 </resources>
