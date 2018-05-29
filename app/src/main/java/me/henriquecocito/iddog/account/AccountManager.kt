@@ -6,10 +6,8 @@ abstract class AccountManager private constructor() {
 
     companion object {
         const val ACCOUNT_TYPE = "me.henriquecocito.iddog"
-        const val ERROR_UNKNOWN = "error_unknown"
 
         private var accountManager : android.accounts.AccountManager? = null
-
 
         fun with(context: Context) : android.accounts.AccountManager? {
             if(accountManager == null) {

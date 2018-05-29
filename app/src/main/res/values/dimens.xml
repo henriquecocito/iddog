@@ -2,4 +2,6 @@
 <resources>
     <dimen name="margin_logo">50dp</dimen>
     <dimen name="padding_default">16dp</dimen>
+    <dimen name="margin_item_grid">8dp</dimen>
+    <dimen name="margin_half_item_grid">4dp</dimen>
 </resources>

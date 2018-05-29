@@ -1,39 +1,47 @@
 package me.henriquecocito.iddog.login.presentation
 
 import android.content.Context
-import me.henriquecocito.iddog.account.AccountInteractor
-import me.henriquecocito.iddog.account.AccountInterface
-import me.henriquecocito.iddog.account.AccountManager
+import io.reactivex.Observer
+import io.reactivex.disposables.Disposable
+import me.henriquecocito.iddog.account.domain.AccountInteractor
+import me.henriquecocito.iddog.account.domain.AccountInterface
+import me.henriquecocito.iddog.login.data.model.User
 import me.henriquecocito.iddog.login.domain.LoginInteractor
 import me.henriquecocito.iddog.login.domain.LoginInterface
 
-class LoginPresenter(private val context: Context, private val view: LoginContract.View) : LoginContract.Presenter {
+class LoginPresenter(context: Context, private val view: LoginContract.View) : LoginContract.Presenter {
 
-    val loginInteractor : LoginInterface = LoginInteractor()
-    val accountInteractor : AccountInterface = AccountInteractor(context)
+    private val loginInteractor : LoginInterface = LoginInteractor()
+    private val accountInteractor : AccountInterface = AccountInteractor(context)
 
     override fun start() {
-
+        getAccount()
     }
 
     override fun login(email: String) {
         view.showLoading()
-        loginInteractor.doLogin(email, onNext = {
-            saveAccount(it.email, it.token)
-        }, onError = {
-            view.showError(it)
-            view.hideLoading()
-        }, onComplete = {
-            view.hideLoading()
-        })
+        loginInteractor
+                .doLogin(email)
+                .subscribe({
+                    saveAccount(it)
+                }, {
+                    view.showError(it)
+                    view.hideLoading()
+                }, {
+                    view.hideLoading()
+                })
     }
 
-    private fun saveAccount(email: String, token: String) {
-        if(accountInteractor.save(email, token)) {
-            view.openFeed()
-            view.finish()
-        } else {
-            view.showError(Throwable(AccountManager.ERROR_UNKNOWN))
-        }
+    private fun saveAccount(user: User) {
+        accountInteractor
+                .save(user)
+                .subscribe({view.openFeed()}, {view.showError(it)}, {view.finish()})
+    }
+
+    private fun getAccount() {
+        view.showLoading()
+        accountInteractor
+                .get()
+                .subscribe({view.openFeed()}, {view.hideLoading()}, {view.finish()})
     }
 }

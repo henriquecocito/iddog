@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -17,6 +17,11 @@
     <style name="StyledText.Title">
         <item name="android:textSize">24sp</item>
         <item name="android:textAlignment">center</item>
+    </style>
+
+    <style name="StyledText.ActionBar">
+        <item name="android:textSize">24sp</item>
+        <item name="android:color">@android:color/white</item>
     </style>
 
     <style name="StyledText.Edit">

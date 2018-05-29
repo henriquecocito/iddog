@@ -1,18 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:title="@string/logo_name"
+            app:titleTextAppearance="@style/StyledText.ActionBar" />
+
+    </android.support.design.widget.AppBarLayout>
 
     <FrameLayout
         android:id="@+id/container"
         android:layout_width="match_parent"
-        android:layout_height="453dp"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@id/loadingWrapper"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/appBar" />
 
     <FrameLayout
         android:id="@+id/loadingWrapper"
@@ -23,11 +40,10 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <ProgressBar
+            style="@style/StyledProgressBar"
             android:id="@+id/loading"
             android:layout_width="match_parent"
-            android:layout_height="16dp"
-            android:visibility="visible"
-            style="@style/StyledProgressBar"/>
+            android:layout_height="16dp"/>
     </FrameLayout>
 
     <android.support.design.widget.BottomNavigationView

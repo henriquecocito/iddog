@@ -1,13 +1,24 @@
 <resources>
+    <!-- Common -->
+    <string name="packageName">me.henriquecocito.iddog</string>
     <string name="app_name">IDdog</string>
     <string name="logo_name">THE IDDOG</string>
+
+    <!-- Hints -->
     <string name="hint_email">email</string>
+
+    <!-- Buttons -->
     <string name="button_login">login</string>
+
+    <!-- Error messages -->
     <string name="error_empty_email">You must enter your email.</string>
     <string name="error_unknown">An error occurred.</string>
-    <string name="packageName">me.henriquecocito.iddog</string>
+    <string name="error_not_found">Not found.</string>
+
+    <!-- Menus -->
     <string name="menu_husky">Husky</string>
     <string name="menu_labrador">Labrador</string>
     <string name="menu_hound">Hound</string>
     <string name="menu_pug">Pug</string>
+    <string name="hint_item_image">Item image</string>
 </resources>

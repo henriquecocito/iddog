@@ -1,15 +1,14 @@
-package me.henriquecocito.iddog.login.presentation
+package me.henriquecocito.iddog.feed.presentation
 
 import me.henriquecocito.iddog.base.presentation.BasePresenterContract
 import me.henriquecocito.iddog.base.presentation.BaseViewContract
 
-interface LoginContract {
+interface FeedContract {
     interface View : BaseViewContract {
-        fun login(view: android.view.View)
-        fun openFeed()
+        fun showItems(list: MutableList<String>)
     }
 
     interface Presenter : BasePresenterContract {
-        fun login(email: String)
+        fun load(category: String)
     }
 }

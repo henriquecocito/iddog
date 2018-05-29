@@ -1,4 +1,4 @@
-package me.henriquecocito.iddog.base
+package me.henriquecocito.iddog.base.presentation
 
 interface BaseViewContract {
     fun finish()

@@ -6,7 +6,7 @@ import android.support.v7.app.AppCompatActivity
 import android.view.View
 import kotlinx.android.synthetic.main.activity_login.*
 import me.henriquecocito.iddog.R
-import me.henriquecocito.iddog.feed.FeedActivity
+import me.henriquecocito.iddog.feed.ui.FeedActivity
 import me.henriquecocito.iddog.login.presentation.LoginContract
 import me.henriquecocito.iddog.login.presentation.LoginPresenter
 
@@ -19,10 +19,6 @@ class LoginActivity : AppCompatActivity(), LoginContract.View {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_login);
-    }
-
-    override fun onStart() {
-        super.onStart()
         presenter.start()
     }
 
