@@ -1,6 +1,7 @@
 package me.henriquecocito.iddog.account.data
 
 import android.accounts.Account
+import android.accounts.AccountsException
 import android.content.Context
 import io.reactivex.Observable
 import me.henriquecocito.iddog.account.AccountManager
@@ -20,20 +21,19 @@ class AccountRepository(private val context: Context) : BaseRepository() {
                 }
                 return@create
             }
-            subscriber.onError(Throwable(AccountInteractor.ERROR_UNKNOWN))
+            subscriber.onError(AccountsException(AccountInteractor.ERROR_UNKNOWN))
         }
     }
 
     fun getAccount() : Observable<User> {
         return Observable.create<User> {subscriber ->
             val accountManager = AccountManager.with(context)
-
             accountManager?.getAccountsByType(AccountManager.ACCOUNT_TYPE)?.firstOrNull()?.let {
                 subscriber.onNext(User(it.name, accountManager.getPassword(it)!!))
                 subscriber.onComplete()
                 return@create
             }
-            subscriber.onError(Throwable(AccountInteractor.ERROR_NOT_FOUND))
+            subscriber.onError(AccountsException(AccountInteractor.ERROR_NOT_FOUND))
         }
     }
 

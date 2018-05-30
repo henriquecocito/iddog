@@ -14,6 +14,10 @@
     <string name="error_empty_email">You must enter your email.</string>
     <string name="error_unknown">An error occurred.</string>
     <string name="error_not_found">Not found.</string>
+    <string name="error_empty_grid_title">No dogs found</string>
+    <string name="error_empty_grid_subtitle">Swipe down to try again.</string>
+    <string name="error_internet_title">No internet connection</string>
+    <string name="error_internet_subtitle">Check your internet connection and swipe down to try again.</string>
 
     <!-- Menus -->
     <string name="menu_husky">Husky</string>
@@ -21,4 +25,7 @@
     <string name="menu_hound">Hound</string>
     <string name="menu_pug">Pug</string>
     <string name="hint_item_image">Item image</string>
+    <string name="error_unknown_title">Something went wrong</string>
+    <string name="error_unknown_subtitle">Swipe down to try again.</string>
+
 </resources>

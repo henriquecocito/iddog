@@ -32,10 +32,6 @@ class FeedGridFragment : Fragment(), FeedContract.View {
         }
     }
 
-    override fun onDetach() {
-        super.onDetach()
-    }
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return layoutInflater.inflate(R.layout.fragment_feed, container, false)
     }
@@ -64,7 +60,7 @@ class FeedGridFragment : Fragment(), FeedContract.View {
     }
 
     override fun showError(e: Throwable) {
-        activity?.container?.let {
+        fragment.let {
             Snackbar
                 .make(it, e.localizedMessage, Snackbar.LENGTH_LONG)
                 .show()
@@ -79,13 +75,58 @@ class FeedGridFragment : Fragment(), FeedContract.View {
         }
     }
 
+    override fun showEmptyView() {
+        fragment.let {
+            it.addView(LayoutInflater.from(context!!).inflate(R.layout.view_empty, it, false))
+        }
+    }
+
+    override fun hideEmptyView() {
+        fragment.let {
+            it.removeView(it.findViewById(R.id.empty))
+        }
+    }
+
+    override fun showNetworkError(e: Throwable) {
+        if(list.size < 1)
+            fragment.let {
+                it.addView(LayoutInflater.from(context!!).inflate(R.layout.view_network_error, it, false))
+            }
+        else
+            showError(e)
+    }
+
+    override fun hideNetworkError() {
+        fragment.let {
+            it.removeView(it.findViewById(R.id.error))
+        }
+    }
+
+    override fun showUnknownError(e: Throwable) {
+        if(list.size < 1)
+            fragment.let {
+                it.addView(LayoutInflater.from(context!!).inflate(R.layout.view_unknown_error, it, false))
+            }
+        else
+            showError(e)
+    }
+
+    override fun hideUnknownError() {
+        fragment.let {
+            it.removeView(it.findViewById(R.id.error))
+        }
+    }
+
     override fun openLogin() {
-        startActivity(LoginActivity.newIntent(this.context!!))
+        startActivity(LoginActivity.newIntent(context!!))
     }
 
     private fun setupSwipeRefresh() {
-        refresh.setOnRefreshListener {
-            arguments?.getString(CATEGORY_KEY)?.let { presenter?.load(it) }
+        refresh.apply {
+            setOnRefreshListener {
+                arguments?.getString(CATEGORY_KEY)?.let { presenter?.load(it) }
+            }
+            setColorSchemeResources(R.color.colorAccent, R.color.colorPrimary)
         }
     }
 

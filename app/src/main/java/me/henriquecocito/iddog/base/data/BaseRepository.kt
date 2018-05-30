@@ -1,6 +1,8 @@
 package me.henriquecocito.iddog.base.data
 
+import me.henriquecocito.iddog.Application
 import me.henriquecocito.iddog.BuildConfig
+import okhttp3.Cache
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -30,5 +32,6 @@ abstract class BaseRepository {
                     } ?: chain.proceed(chain.request())
 
                 }
+                .cache(Application.getContext()?.cacheDir?.let { Cache(it, 1024*1024) } )
                 .build()
 }

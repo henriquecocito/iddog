@@ -18,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:title="@string/logo_name"
-            app:titleTextAppearance="@style/StyledText.ActionBar" />
+            app:titleTextAppearance="@style/StyledText.ActionBar"/>
 
     </android.support.design.widget.AppBarLayout>
 
