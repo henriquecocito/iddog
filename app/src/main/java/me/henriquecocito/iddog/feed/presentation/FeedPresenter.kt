@@ -9,10 +9,12 @@ import me.henriquecocito.iddog.feed.domain.FeedInterface
 import retrofit2.HttpException
 import java.net.UnknownHostException
 
-class FeedPresenter(context: Context, private val view: FeedContract.View) : FeedContract.Presenter {
+class FeedPresenter(
+        private val view: FeedContract.View,
+        private val feedInteractor: FeedInterface,
+        private val accountInteractor: AccountInterface) : FeedContract.Presenter {
 
-    private val feedInteractor : FeedInterface = FeedInteractor()
-    private val accountInteractor : AccountInterface = AccountInteractor(context)
+    constructor(context: Context, view: FeedContract.View) : this(view, FeedInteractor(), AccountInteractor(context))
 
     override fun start() {
     }
