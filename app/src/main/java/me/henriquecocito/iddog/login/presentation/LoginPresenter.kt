@@ -2,17 +2,25 @@ package me.henriquecocito.iddog.login.presentation
 
 import android.content.Context
 import io.reactivex.Observer
+import io.reactivex.Scheduler
+import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
+import io.reactivex.schedulers.Schedulers
 import me.henriquecocito.iddog.account.domain.AccountInteractor
 import me.henriquecocito.iddog.account.domain.AccountInterface
 import me.henriquecocito.iddog.login.data.model.User
 import me.henriquecocito.iddog.login.domain.LoginInteractor
 import me.henriquecocito.iddog.login.domain.LoginInterface
 
-class LoginPresenter(context: Context, private val view: LoginContract.View) : LoginContract.Presenter {
+class LoginPresenter(
+        private val view: LoginContract.View,
+        loginInteractor: LoginInterface,
+        accountInteractor: AccountInterface) : LoginContract.Presenter {
 
-    private val loginInteractor : LoginInterface = LoginInteractor()
-    private val accountInteractor : AccountInterface = AccountInteractor(context)
+    constructor(context: Context, view: LoginContract.View) : this(view, LoginInteractor(), AccountInteractor(context))
+
+    private val loginInteractor : LoginInterface = loginInteractor
+    private val accountInteractor : AccountInterface = accountInteractor
 
     override fun start() {
         getAccount()

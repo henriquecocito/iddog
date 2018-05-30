@@ -7,7 +7,7 @@ import io.reactivex.schedulers.Schedulers
 
 abstract class BaseInteractor {
 
-    protected fun <T> Observable<T>.execute() : Observable<T> {
+    fun <T> Observable<T>.execute() : Observable<T> {
         return observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.newThread())
     }
