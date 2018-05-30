@@ -67,6 +67,7 @@ class LoginInteractorTest {
 
         interactor.doLogin(email).subscribe(observer)
         observer.assertError(Throwable::class.java)
+        observer.assertNotComplete()
     }
 
     @After

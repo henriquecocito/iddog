@@ -1,4 +1,4 @@
-package me.henriquecocito.iddog.detail
+package me.henriquecocito.iddog.detail.ui
 
 import android.content.Context
 import android.content.Intent

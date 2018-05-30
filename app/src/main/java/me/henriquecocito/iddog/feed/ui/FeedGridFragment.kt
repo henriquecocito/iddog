@@ -1,6 +1,5 @@
 package me.henriquecocito.iddog.feed.ui
 
-import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v4.app.Fragment
@@ -10,7 +9,7 @@ import android.view.ViewGroup
 import kotlinx.android.synthetic.main.activity_feed.*
 import kotlinx.android.synthetic.main.fragment_feed.*
 import me.henriquecocito.iddog.R
-import me.henriquecocito.iddog.detail.DetailActivity
+import me.henriquecocito.iddog.detail.ui.DetailActivity
 import me.henriquecocito.iddog.feed.presentation.FeedContract
 import me.henriquecocito.iddog.feed.presentation.FeedPresenter
 import me.henriquecocito.iddog.login.ui.LoginActivity

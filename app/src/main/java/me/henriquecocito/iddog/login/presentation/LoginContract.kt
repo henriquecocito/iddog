@@ -1,6 +1,5 @@
 package me.henriquecocito.iddog.login.presentation
 
-import me.henriquecocito.iddog.account.domain.AccountInterface
 import me.henriquecocito.iddog.base.presentation.BasePresenterContract
 import me.henriquecocito.iddog.base.presentation.BaseViewContract
 

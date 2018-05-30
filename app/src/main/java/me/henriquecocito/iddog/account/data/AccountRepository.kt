@@ -9,10 +9,9 @@ import me.henriquecocito.iddog.account.domain.AccountInteractor
 import me.henriquecocito.iddog.base.data.BaseRepository
 import me.henriquecocito.iddog.login.data.model.User
 
-class AccountRepository(private val context: Context) : BaseRepository() {
+class AccountRepository(private val context: Context) : BaseRepository(), AccountRepositoryInterface {
 
-    fun saveAccount(user: User) : Observable<User> {
-        return Observable.create<User> { subscriber ->
+    override fun saveAccount(user: User): Observable<User> = Observable.create<User> { subscriber ->
             val account = Account(user.email, AccountManager.ACCOUNT_TYPE)
             AccountManager.with(context)?.addAccountExplicitly(account, user.token, null)?.let {
                 if(it) {
@@ -23,18 +22,14 @@ class AccountRepository(private val context: Context) : BaseRepository() {
             }
             subscriber.onError(AccountsException(AccountInteractor.ERROR_UNKNOWN))
         }
-    }
 
-    fun getAccount() : Observable<User> {
-        return Observable.create<User> {subscriber ->
-            val accountManager = AccountManager.with(context)
-            accountManager?.getAccountsByType(AccountManager.ACCOUNT_TYPE)?.firstOrNull()?.let {
-                subscriber.onNext(User(it.name, accountManager.getPassword(it)!!))
-                subscriber.onComplete()
-                return@create
-            }
-            subscriber.onError(AccountsException(AccountInteractor.ERROR_NOT_FOUND))
+    override fun getAccount(): Observable<User> = Observable.create<User> { subscriber ->
+        val accountManager = AccountManager.with(context)
+        accountManager?.getAccountsByType(AccountManager.ACCOUNT_TYPE)?.firstOrNull()?.let {
+            subscriber.onNext(User(it.name, accountManager.getPassword(it)!!))
+            subscriber.onComplete()
+            return@create
         }
+        subscriber.onError(AccountsException(AccountInteractor.ERROR_NOT_FOUND))
     }
-
 }
