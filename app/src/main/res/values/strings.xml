@@ -27,5 +27,6 @@
     <string name="hint_item_image">Item image</string>
     <string name="error_unknown_title">Something went wrong</string>
     <string name="error_unknown_subtitle">Swipe down to try again.</string>
+    <string name="label_counter">%1$s of %2$s</string>
 
 </resources>
