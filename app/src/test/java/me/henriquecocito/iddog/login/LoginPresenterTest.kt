@@ -13,9 +13,11 @@ import me.henriquecocito.iddog.login.data.model.User
 import me.henriquecocito.iddog.login.domain.LoginInterface
 import me.henriquecocito.iddog.login.presentation.LoginContract
 import me.henriquecocito.iddog.login.presentation.LoginPresenter
+import org.junit.After
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
+import org.mockito.ArgumentMatchers.anyString
 import org.mockito.Mock
 import org.mockito.junit.MockitoJUnitRunner
 
@@ -43,7 +45,7 @@ class LoginPresenterTest {
     @Test
     fun testLogin_shouldOpenFeed_whenResponseIsSuccess() {
 
-        given(loginInteractor.doLogin(any())).willReturn {
+        given(loginInteractor.doLogin(anyString())).willReturn {
             Observable.just(expectedUser)
         }
 
@@ -63,7 +65,7 @@ class LoginPresenterTest {
 
         val expectedError = Throwable("Error test")
 
-        given(loginInteractor.doLogin(any())).willReturn {
+        given(loginInteractor.doLogin(anyString())).willReturn {
             Observable.error(expectedError)
         }
 
@@ -101,5 +103,11 @@ class LoginPresenterTest {
 
         verify(view).showLoading()
         verify(view).hideLoading()
+    }
+
+    @After
+    fun tearDown(){
+        RxAndroidPlugins.reset()
+        RxJavaPlugins.reset()
     }
 }

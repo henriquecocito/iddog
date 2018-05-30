@@ -3,14 +3,15 @@ package me.henriquecocito.iddog.login.domain
 import io.reactivex.Observable
 import me.henriquecocito.iddog.base.domain.BaseInteractor
 import me.henriquecocito.iddog.login.data.LoginRepository
+import me.henriquecocito.iddog.login.data.LoginRepositoryInterface
 import me.henriquecocito.iddog.login.data.model.LoginResponse
 import me.henriquecocito.iddog.login.data.model.User
 
-class LoginInteractor : BaseInteractor(), LoginInterface {
+class LoginInteractor(private val repository: LoginRepositoryInterface) : BaseInteractor(), LoginInterface {
 
-    private val repository = LoginRepository()
+    constructor() : this(LoginRepository())
 
-    private companion object {
+    companion object {
         const val ERROR_EMPTY = "error_empty_email"
     }
 
