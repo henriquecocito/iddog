@@ -1,6 +1,6 @@
 # 🤖 IDdog for ![alt text](idwall.png "IDwall") 
 
-## Instalation
+## Installation
 To install this app you should access the link below and follow the instructions:
 
 [Beta by Crashlytics](https://betas.to/yiNduEzF)
