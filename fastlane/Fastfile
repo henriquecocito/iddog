@@ -23,8 +23,11 @@ platform :android do
 
   desc "Submit a new Beta Build to Crashlytics Beta"
   lane :beta do
-    gradle(task: "clean assembleRelease")
-    crashlytics
+    gradle(task: "clean assembleDebug")
+    crashlytics(
+	api_token: "e367dafbed79a3961b97de38cd615adad75894fd",
+    	build_secret: "a0655c25e514a06198c5f1293bbd6940b5f83d6d7fe427aa9943caf493d7444f"
+    )
   
     # sh "your_script.sh"
     # You can also use other beta testing services here
