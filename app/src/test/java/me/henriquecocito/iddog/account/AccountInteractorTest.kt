@@ -13,6 +13,7 @@ import me.henriquecocito.iddog.account.data.AccountRepositoryInterface
 import me.henriquecocito.iddog.account.domain.AccountInteractor
 import me.henriquecocito.iddog.account.domain.AccountInterface
 import me.henriquecocito.iddog.login.data.model.User
+import org.junit.After
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -99,5 +100,11 @@ class AccountInteractorTest {
 
         observer.assertError(Throwable::class.java)
         observer.assertNotComplete()
+    }
+
+    @After
+    fun tearDown(){
+        RxAndroidPlugins.reset()
+        RxJavaPlugins.reset()
     }
 }

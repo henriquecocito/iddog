@@ -2,10 +2,11 @@ package me.henriquecocito.iddog.feed.domain
 
 import me.henriquecocito.iddog.base.domain.BaseInteractor
 import me.henriquecocito.iddog.feed.data.FeedRepository
+import me.henriquecocito.iddog.feed.data.FeedRepositoryInterface
 
-class FeedInteractor : BaseInteractor(), FeedInterface {
+class FeedInteractor(private val repository: FeedRepositoryInterface) : BaseInteractor(), FeedInterface {
 
-    private val repository = FeedRepository()
+    constructor() : this(FeedRepository())
 
     override fun feed(category: String, token: String) = repository.feed(category, token).execute()
 

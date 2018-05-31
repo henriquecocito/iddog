@@ -15,6 +15,7 @@ import me.henriquecocito.iddog.feed.domain.FeedInterface
 import me.henriquecocito.iddog.feed.presentation.FeedContract
 import me.henriquecocito.iddog.feed.presentation.FeedPresenter
 import me.henriquecocito.iddog.login.data.model.User
+import org.junit.After
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -148,5 +149,11 @@ class FeedPresenterTest {
         verify(view).showLoading()
         verify(view).showUnknownError(expectedError)
         verify(view).hideLoading()
+    }
+
+    @After
+    fun tearDown(){
+        RxAndroidPlugins.reset()
+        RxJavaPlugins.reset()
     }
 }
