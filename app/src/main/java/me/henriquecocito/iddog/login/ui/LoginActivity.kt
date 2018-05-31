@@ -15,7 +15,7 @@ import me.henriquecocito.iddog.login.presentation.LoginPresenter
 
 class LoginActivity : AppCompatActivity(), LoginContract.View {
 
-    private val presenter : LoginContract.Presenter = LoginPresenter(this, this)
+    var presenter : LoginContract.Presenter = LoginPresenter(this, this)
 
     companion object {
         fun newIntent(context: Context) = Intent(context, LoginActivity::class.java)
