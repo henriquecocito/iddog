@@ -5,6 +5,8 @@ To install this app you should access the link below and follow the instructions
 
 [Beta by Crashlytics](https://betas.to/yiNduEzF)
 
+Or download the Debug APK [here](https://github.com/henriquecocito/iddog/blob/master/app-debug.apk).
+
 ## Development
 This Android app was built using [Kotlin](https://kotlinlang.org/) instead of Java. Kotlin is the newer official programming language for Android apps according to [Android Developers](https://developer.android.com/kotlin/).
 

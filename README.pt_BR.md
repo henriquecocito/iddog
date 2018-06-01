@@ -1,10 +1,11 @@
-# 🤖 IDdog para
-![alt text](idwall.png "IDwall") 
+# 🤖 IDdog para ![alt text](idwall.png "IDwall") 
 
 ## Instalação
 Para instalar o app você precisa acessar o link abaixo e seguir as instruções:
 
 [Beta by Crashlytics](https://betas.to/yiNduEzF)
+
+Ou faça o download do apk [aqui](https://github.com/henriquecocito/iddog/blob/master/app-debug.apk)
 
 ## Desenvolvimento
 Esse app foi desenvolvido utilizando [Kotlin](https://kotlinlang.org/) ao invés de Java. Kotlin é a mais nova linguagem de programação utilizada para aplicativos Android, segundo o site [Android Developers](https://developer.android.com/kotlin/).
